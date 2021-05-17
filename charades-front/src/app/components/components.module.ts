@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BoardComponent } from './drawing/board/board.component';
+import { ChatComponent } from './chat/chat.component';
+import { MessageComponent } from './chat/message/message.component';
 
 @NgModule({
   imports: [
@@ -14,13 +16,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   declarations: [
     FooterComponent,
-    NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    BoardComponent,
+    ChatComponent,
+    MessageComponent
   ],
   exports: [
     FooterComponent,
-    NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    BoardComponent
   ]
 })
 export class ComponentsModule { }

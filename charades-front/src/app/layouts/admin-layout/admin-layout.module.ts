@@ -10,7 +10,8 @@ import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { ToastrModule } from 'ngx-toastr';
+import {GameRoomComponent} from "../../pages/game-room/game-room.component";
+import {ComponentsModule} from "../../components/components.module";
 
 @NgModule({
   imports: [
@@ -19,12 +20,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ComponentsModule
   ],
   declarations: [
     DashboardComponent,
     TablesComponent,
-    IconsComponent
+    IconsComponent,
+    GameRoomComponent
   ]
 })
 
