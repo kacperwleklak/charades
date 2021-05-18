@@ -1,1 +1,9 @@
-<p>chat works!</p>
+<div class="chat scrollbar-dark">
+  <div class="messages-list scrollbar-dark">
+    <div class="message" *ngFor='let message of messagesList'>
+      <app-message [message]="message" ></app-message>
+    </div>
+  </div>
+  <app-input-field (sendMessage)="handleSentMessage($event)"></app-input-field>
+</div>
+

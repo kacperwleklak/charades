@@ -1,0 +1,32 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  background-color: #505050;
+
+  .messages-list {
+    overflow-x: hidden;
+    flex-grow: 2;
+
+    &.scrollbar-dark {
+      &::-webkit-scrollbar {
+        width: 12px;
+        background-color: #505050;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: #505050;
+      }
+
+      &::-webkit-scrollbar-thumb{
+        border: 1px solid #C9F4FE;
+        background-color: #5F5F5F;
+      }
+    }
+
+    .message:nth-child(odd) {background-color: #5F5F5F}
+  }
+}

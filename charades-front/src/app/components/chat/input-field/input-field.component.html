@@ -1,0 +1,7 @@
+<div class="input-field">
+  <div class="message-form-group">
+    <input type="text" [(ngModel)]="message" (keyup.enter)="onSend()"
+           placeholder="Your message" aria-label="Your message" aria-describedby="basic-addon2">
+    <button (click)="onSend()"><i class="ni ni-send"></i></button>
+  </div>
+</div>
