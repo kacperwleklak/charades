@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import {fromEvent, Subscription} from 'rxjs';
 import {pairwise, switchMap, takeUntil} from 'rxjs/operators';
 
@@ -7,9 +7,9 @@ import {pairwise, switchMap, takeUntil} from 'rxjs/operators';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements OnInit {
-  @Input() brushColor = '#000';
-  @Input() brushSize = 6;
+export class BoardComponent implements AfterViewInit, OnChanges {
+  @Input() brushSize: number;
+  @Input() brushColor: string;
   @Input() width = 600;
   @Input() height = 500;
   @ViewChild('canvas') canvas: ElementRef;
@@ -19,7 +19,13 @@ export class BoardComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.brushColor && !changes.brushColor.isFirstChange()) {
+      this.cx.strokeStyle = this.brushColor;
+    }
+    if (changes.brushSize && !changes.brushSize.isFirstChange()) {
+      this.cx.lineWidth = this.brushSize;
+    }
   }
 
   ngAfterViewInit(): void {
@@ -36,7 +42,7 @@ export class BoardComponent implements OnInit {
   captureEvents(canvasEl: HTMLCanvasElement) {
     this.drawingSubscription = fromEvent(canvasEl, 'mousedown')
       .pipe(
-        switchMap(e => {
+        switchMap(() => {
           return fromEvent(canvasEl, 'mousemove').pipe(
             takeUntil(fromEvent(canvasEl, 'mouseup')),
             takeUntil(fromEvent(canvasEl, 'mouseleave')),
@@ -71,6 +77,10 @@ export class BoardComponent implements OnInit {
       this.cx.lineTo(currentPos.x, currentPos.y);
       this.cx.stroke();
     }
+  }
+
+  eraseCanvas() {
+    this.cx.canvas.getContext('2d').clearRect(0, 0, this.width, this.height);
   }
 
   ngOnDestroy() {

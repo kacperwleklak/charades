@@ -1,4 +1,5 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {BrushSettings} from "../brush-settings";
 
 @Component({
   selector: 'app-toolbar',
@@ -6,9 +7,9 @@ import {Component, OnInit, Output} from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  @Output() eraseCanvas: EventEmitter<null> = new EventEmitter();
 
-  @Output() activeColor: string;
-  @Output() activeBrush: string;
+  brushSettings: BrushSettings;
   colors : string[];
   brushSizes : number[] = [6, 12, 18, 24];
 
@@ -16,12 +17,27 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.setColors();
-
+    this.defaultSettings();
   }
 
   defaultSettings() {
-    this.activeColor = this.colors[0];
-    this.activeBrush = this.activeBrush[0];
+    this.brushSettings = new BrushSettings();
+    this.brushSettings.color = this.colors[5];
+    this.brushSettings.size = this.brushSizes[0];
+  }
+
+  onColorClick(chosenColor : string) {
+    this.brushSettings.color = chosenColor;
+    console.debug("New active color: " + this.brushSettings.color)
+  }
+
+  onBrushSizeClick(chosenBrushSize : number) {
+    this.brushSettings.size = chosenBrushSize;
+    console.debug("New active brush: " + this.brushSettings.size)
+  }
+
+  onEraseCanvas() {
+    this.eraseCanvas.emit();
   }
 
   setColors() {

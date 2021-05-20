@@ -21,6 +21,10 @@
       border-radius: 50%;
       margin: 2px;
 
+      &.active {
+        border-color: deeppink;
+      }
+
       &:after {
         content: '.';
         visibility: hidden;
@@ -28,7 +32,6 @@
     }
 
     .color-pickers {
-
       .color-pick {
         display: inline-block;
         height: 30px;
@@ -38,6 +41,7 @@
 
     .brush-pickers {
       .brush-pick {
+        background-color: #FFFFFF;
         margin: auto auto 10px;
         display: block;
       }

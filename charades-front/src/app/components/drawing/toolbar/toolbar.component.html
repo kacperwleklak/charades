@@ -2,17 +2,25 @@
   <div class="toolbar-inner">
 
     <div class="brush-pickers toolbar-section">
-      <div class="brush-pick pick" [ngStyle]="{'width': brushSize + 'px', 'height': brushSize + 'px'}" *ngFor='let brushSize of brushSizes'>
+      <div class="brush-pick pick"
+           [ngClass]="{'active': brushSize == brushSettings.size}"
+           [ngStyle]="{'width': brushSize + 'px', 'height': brushSize + 'px'}"
+           *ngFor='let brushSize of brushSizes'
+           (click)="onBrushSizeClick(brushSize)">
       </div>
     </div>
 
     <div class="color-pickers toolbar-section">
-      <div class="color-pick pick" [ngStyle]="{'background-color' : color}" *ngFor='let color of colors'>
+      <div class="color-pick pick"
+           [ngClass]="{'active': color == brushSettings.color}"
+           [ngStyle]="{'background-color' : color}"
+           *ngFor='let color of colors'
+           (click)="onColorClick(color)">
       </div>
     </div>
 
     <div class="action-pickers toolbar-section">
-      <div class="action-pick pick"><i class="ni ni-fat-remove"></i></div>
+      <div class="action-pick pick" (click)="onEraseCanvas()"><i class="ni ni-fat-remove"></i></div>
     </div>
 
   </div>
