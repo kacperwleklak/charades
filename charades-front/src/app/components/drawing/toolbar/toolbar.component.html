@@ -1,0 +1,19 @@
+<div class="toolbar">
+  <div class="toolbar-inner">
+
+    <div class="brush-pickers toolbar-section">
+      <div class="brush-pick pick" [ngStyle]="{'width': brushSize + 'px', 'height': brushSize + 'px'}" *ngFor='let brushSize of brushSizes'>
+      </div>
+    </div>
+
+    <div class="color-pickers toolbar-section">
+      <div class="color-pick pick" [ngStyle]="{'background-color' : color}" *ngFor='let color of colors'>
+      </div>
+    </div>
+
+    <div class="action-pickers toolbar-section">
+      <div class="action-pick pick"><i class="ni ni-fat-remove"></i></div>
+    </div>
+
+  </div>
+</div>

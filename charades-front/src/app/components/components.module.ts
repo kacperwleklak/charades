@@ -9,6 +9,8 @@ import { ChatComponent } from './chat/chat.component';
 import { MessageComponent } from './chat/message/message.component';
 import { InputFieldComponent } from './chat/input-field/input-field.component';
 import {FormsModule} from "@angular/forms";
+import { DrawingComponent } from './drawing/drawing.component';
+import { ToolbarComponent } from './drawing/toolbar/toolbar.component';
 
 @NgModule({
   imports: [
@@ -23,13 +25,16 @@ import {FormsModule} from "@angular/forms";
     BoardComponent,
     ChatComponent,
     MessageComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    DrawingComponent,
+    ToolbarComponent
   ],
     exports: [
         FooterComponent,
         SidebarComponent,
         BoardComponent,
-        ChatComponent
+        ChatComponent,
+        DrawingComponent
     ]
 })
 export class ComponentsModule { }

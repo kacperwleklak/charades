@@ -1,0 +1,63 @@
+.toolbar {
+  flex: 1;
+  height: 100%;
+  background-color: #505050;
+
+  .toolbar-inner {
+    text-align: center;
+    width: 70px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .toolbar-section {
+
+    }
+
+    .pick {
+      box-sizing: border-box;
+      border: 2px white solid;
+      border-radius: 50%;
+      margin: 2px;
+
+      &:after {
+        content: '.';
+        visibility: hidden;
+      }
+    }
+
+    .color-pickers {
+
+      .color-pick {
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    .brush-pickers {
+      .brush-pick {
+        margin: auto auto 10px;
+        display: block;
+      }
+    }
+
+    .action-pickers {
+      .action-pick {
+        margin: auto;
+        width: 30px;
+        height: 30px;
+        background-color: #FFFFFF;
+        color: #505050;
+        line-height: 30px;
+        text-align: center;
+        font-size: 30px;
+
+        i {
+          margin: -2px;
+        }
+      }
+    }
+  }
+}

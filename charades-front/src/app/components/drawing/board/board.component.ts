@@ -1,31 +1,35 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild, OnInit } from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {fromEvent, Subscription} from 'rxjs';
-import { pairwise, switchMap, takeUntil } from 'rxjs/operators';
+import {pairwise, switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
-  ngOnInit(): void {
-  }
-
-  @Input() width = 512;
-  @Input() height = 418;
+  @Input() brushColor = '#000';
+  @Input() brushSize = 6;
+  @Input() width = 600;
+  @Input() height = 500;
   @ViewChild('canvas') canvas: ElementRef;
   cx: CanvasRenderingContext2D;
   drawingSubscription: Subscription;
-  constructor() { }
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+  }
 
   ngAfterViewInit(): void {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     this.cx = canvasEl.getContext('2d');
     canvasEl.width = this.width;
     canvasEl.height = this.height;
-    this.cx.lineWidth = 3;
+    this.cx.lineWidth = this.brushSize;
     this.cx.lineCap = 'round';
-    this.cx.strokeStyle = '#000';
+    this.cx.strokeStyle = this.brushColor;
     this.captureEvents(canvasEl);
   }
 
