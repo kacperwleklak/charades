@@ -46,6 +46,7 @@ export class GameService {
     this.playerSession.name = nickname;
     let message = {operation: Operation.ESTABLISH, name: nickname};
     this.sendMessage(message);
+    this.router.navigateByUrl("/rooms");
   }
 
   getRoomsInfo() {
@@ -99,7 +100,7 @@ export class GameService {
     if (message != "HOME") {
       service.router.navigateByUrl("/game-room");
     } else {
-      service.router.navigateByUrl("/rooms-list");
+      service.router.navigateByUrl("/rooms");
     }
   }
 
