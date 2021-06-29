@@ -1,0 +1,10 @@
+export enum Operation {
+
+  ESTABLISH = "ESTABLISH",
+  ROOMS_INFO = "ROOMS_INFO",
+  ROOM_INFO = "ROOM_INFO",
+  JOIN_ROOM = "JOIN_ROOM",
+  DRAW = "DRAW_ON_CANVAS",
+  CHAT = "CHAT",
+
+}

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ToolbarComponent} from "./toolbar/toolbar.component";
 import {BrushSettings} from "./brush-settings";
 import {BoardComponent} from "./board/board.component";
@@ -8,27 +8,25 @@ import {BoardComponent} from "./board/board.component";
   templateUrl: './drawing.component.html',
   styleUrls: ['./drawing.component.scss']
 })
-export class DrawingComponent implements OnInit, AfterViewInit {
+export class DrawingComponent implements OnInit {
 
   @ViewChild(ToolbarComponent) toolbar: ToolbarComponent;
   @ViewChild(BoardComponent) board: BoardComponent;
   brushSettings: BrushSettings;
-  toolbarInitialized: boolean;
 
   constructor() {
+    this.brushSettings = new BrushSettings();
   }
 
   ngOnInit(): void {
-    this.toolbarInitialized = false;
-  }
-
-  ngAfterViewInit() {
-    this.brushSettings = this.toolbar.brushSettings;
-    this.toolbarInitialized = true;
   }
 
   onEraseCanvas() {
     this.board.eraseCanvas();
+  }
+
+  afterToolbarLoaded() {
+    this.brushSettings = this.toolbar.brushSettings;
   }
 
 }

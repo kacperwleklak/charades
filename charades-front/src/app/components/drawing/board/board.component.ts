@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
-import {fromEvent, Subscription} from 'rxjs';
-import {pairwise, switchMap, takeUntil} from 'rxjs/operators';
+import {fromEvent, merge, Subscription} from 'rxjs';
+import {mapTo, pairwise, switchMap, takeUntil} from 'rxjs/operators';
+import {GameService} from "../../../services/game.service";
 
 @Component({
   selector: 'app-board',
@@ -15,8 +16,9 @@ export class BoardComponent implements AfterViewInit, OnChanges {
   @ViewChild('canvas') canvas: ElementRef;
   cx: CanvasRenderingContext2D;
   drawingSubscription: Subscription;
+  sendingSubscription: Subscription;
 
-  constructor() {
+  constructor(private gameService: GameService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -62,6 +64,12 @@ export class BoardComponent implements AfterViewInit, OnChanges {
         };
         this.drawOnCanvas(prevPos, currentPos);
       });
+
+    this.sendingSubscription = merge(
+      fromEvent(canvasEl, 'mouseup').pipe(mapTo('mouseup')),
+      fromEvent(canvasEl, 'mouseleave').pipe(mapTo('mouseleave')),
+    ).subscribe(() => this.gameService.drawImage(canvasEl.toDataURL())
+    )
   }
 
   drawOnCanvas(

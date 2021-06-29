@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import {GameService} from "../../services/game.service";
 
 @Component({
   selector: 'app-login',
@@ -6,13 +7,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  constructor() {}
+  constructor(private gameService: GameService) {}
+  nickname : string;
 
-  ngOnInit() {
-    console.log("Hej");
-    debugger;
-  }
-  ngOnDestroy() {
+  ngOnInit() {}
+  ngOnDestroy() {}
+
+  onLogin() {
+    this.gameService.establishConnection(this.nickname);
   }
 
 }

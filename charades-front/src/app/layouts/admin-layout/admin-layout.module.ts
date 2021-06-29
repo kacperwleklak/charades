@@ -1,17 +1,19 @@
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import { ClipboardModule } from 'ngx-clipboard';
+import {ClipboardModule} from 'ngx-clipboard';
 
-import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
-import { IconsComponent } from '../../pages/icons/icons.component';
-import { TablesComponent } from '../../pages/tables/tables.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {AdminLayoutRoutes} from './admin-layout.routing';
+import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
+import {IconsComponent} from '../../pages/icons/icons.component';
+import {TablesComponent} from '../../pages/tables/tables.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {GameRoomComponent} from "../../pages/game-room/game-room.component";
 import {ComponentsModule} from "../../components/components.module";
+import {RoomsListComponent} from "../../pages/rooms-list/rooms-list.component";
 
 @NgModule({
   imports: [
@@ -27,8 +29,10 @@ import {ComponentsModule} from "../../components/components.module";
     DashboardComponent,
     TablesComponent,
     IconsComponent,
-    GameRoomComponent
+    GameRoomComponent,
+    RoomsListComponent
   ]
 })
 
-export class AdminLayoutModule {}
+export class AdminLayoutModule {
+}

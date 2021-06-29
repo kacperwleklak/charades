@@ -29,11 +29,14 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                 </div>
-                <input class="form-control" placeholder="Nickname" type="email">
+                <input class="form-control" placeholder="Nickname"
+                       [(ngModel)]="nickname" [ngModelOptions]="{standalone: true}" type="text">
               </div>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4"><i class="ni ni-controller"></i> Lets play!</button>
+              <button type="button" class="btn btn-primary my-4"
+                      (click)="onLogin()"><i class="ni ni-controller"></i> Lets play!
+              </button>
             </div>
           </form>
         </div>

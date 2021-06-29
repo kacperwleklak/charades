@@ -1,6 +1,6 @@
 <div class="drawing container-fluid">
   <div class="drawing-inner">
-    <app-board *ngIf="toolbarInitialized" [brushSize]="brushSettings.size" [brushColor]="brushSettings.color"></app-board>
-    <app-toolbar (eraseCanvas)="onEraseCanvas()"></app-toolbar>
+    <app-board [brushSize]="brushSettings.size" [brushColor]="brushSettings.color"></app-board>
+    <app-toolbar (toolbarLoaded)="afterToolbarLoaded()" (eraseCanvas)="onEraseCanvas()"></app-toolbar>
   </div>
 </div>

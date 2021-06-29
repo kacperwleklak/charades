@@ -1,6 +1,6 @@
 export class Message {
 
-  user: string;
+  author: string;
   message: string;
 
   constructor() {

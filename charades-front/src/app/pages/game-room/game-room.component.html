@@ -1,7 +1,11 @@
 <div class="container-fluid game-room">
+  <h1>{{room.name}}</h1>
+  <h2 *ngIf="viewInitialized && playerName == room.drawing">Word to draw: {{room.word}}</h2>
+  <h2 *ngIf="viewInitialized && playerName != room.drawing">Current draw player: {{room.drawing}}</h2>
   <div class="row">
     <div class="col-lg-9 p-0">
-      <app-drawing></app-drawing>
+      <app-drawing *ngIf="viewInitialized && playerName == room.drawing"></app-drawing>
+      <canvas #showingCanvas></canvas>
     </div>
 
     <div class="col-lg-3 p-0">

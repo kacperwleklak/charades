@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BrushSettings} from "../brush-settings";
 
 @Component({
@@ -6,8 +6,9 @@ import {BrushSettings} from "../brush-settings";
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent implements OnInit, AfterViewInit {
   @Output() eraseCanvas: EventEmitter<null> = new EventEmitter();
+  @Output() toolbarLoaded: EventEmitter<boolean> = new EventEmitter();
 
   brushSettings: BrushSettings;
   colors : string[];
@@ -18,6 +19,11 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
     this.setColors();
     this.defaultSettings();
+  }
+
+  ngAfterViewInit(){
+    console.log('Toolbar loaded');
+    this.toolbarLoaded.emit(true);
   }
 
   defaultSettings() {
